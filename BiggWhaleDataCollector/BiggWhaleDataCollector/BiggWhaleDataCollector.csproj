@@ -75,6 +75,12 @@
     <Reference Include="NCrawler">
       <HintPath>References\NCrawler.dll</HintPath>
     </Reference>
+    <Reference Include="NCrawler.Demo">
+      <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\Binaries\Demo\NCrawler.Demo.exe</HintPath>
+    </Reference>
+    <Reference Include="NCrawler.HtmlProcessor">
+      <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\Binaries\NCrawler.HtmlProcessor.dll</HintPath>
+    </Reference>
     <Reference Include="NCrawler.LanguageDetection.Google">
       <HintPath>References\NCrawler.LanguageDetection.Google.dll</HintPath>
     </Reference>
@@ -97,96 +103,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncRequestState.cs" />
-    <Compile Include="ContentIndexer.cs" />
-    <Compile Include="Crawler.cs" />
-    <Compile Include="Crawler.Events.cs" />
-    <Compile Include="Crawler.Properties.cs" />
-    <Compile Include="CrawlerQueueEntry.cs" />
-    <Compile Include="CrawlStep.cs" />
-    <Compile Include="Extensions\TextWriterExtensions.cs" />
-    <Compile Include="GoogleLanguageDetection\GoogleLanguageDetection.cs" />
-    <Compile Include="HtmlProcessor\ContentCrawlerRules.cs" />
-    <Compile Include="HtmlProcessor\EMailEntityExtractionProcessor.cs" />
-    <Compile Include="HtmlProcessor\Extensions\ExtendedHtmlUtility.cs" />
-    <Compile Include="HtmlProcessor\Extensions\HtmlAgilityPackExtensions.cs" />
-    <Compile Include="HtmlProcessor\HtmlDocumentProcessor.cs" />
-    <Compile Include="HtmlProcessor\Interfaces\ISubstitution.cs" />
-    <Compile Include="HtmlProcessor\LinkExtractionProcessor.cs" />
-    <Compile Include="HtmlProcessor\Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="HtmlProcessor\RegexSubstitution.cs" />
-    <Compile Include="HtmlProcessor\TextDocumentProcessor.cs" />
-    <Compile Include="Events\AfterDownloadEventArgs.cs" />
-    <Compile Include="Events\BeforeDownloadEventArgs.cs" />
-    <Compile Include="Events\CrawlFinishedEventArgs.cs" />
-    <Compile Include="Events\DownloadExceptionEventArgs.cs" />
-    <Compile Include="Events\DownloadProgressEventArgs.cs" />
-    <Compile Include="Events\PipelineExceptionEventArgs.cs" />
-    <Compile Include="Extensions\AspectExtensions.cs" />
-    <Compile Include="Extensions\EventHandlerExtensions.cs" />
-    <Compile Include="Extensions\IAsyncResultExtensions.cs" />
-    <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
-    <Compile Include="Extensions\StreamExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\TaskExtensions.cs" />
-    <Compile Include="Extensions\UriExtensions.cs" />
-    <Compile Include="Extensions\UrlExtensions.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\ICache.cs" />
-    <Compile Include="Interfaces\ICrawlerHistory.cs" />
-    <Compile Include="Interfaces\ICrawlerQueue.cs" />
-    <Compile Include="Interfaces\ICrawlerRules.cs" />
-    <Compile Include="Interfaces\IFilter.cs" />
-    <Compile Include="Interfaces\ILog.cs" />
-    <Compile Include="Interfaces\IPipelineStep.cs" />
-    <Compile Include="Interfaces\IPipelineStepWithTimeout.cs" />
-    <Compile Include="Interfaces\IRobot.cs" />
-    <Compile Include="Interfaces\ITaskRunner.cs" />
-    <Compile Include="Interfaces\IWebDownloader.cs" />
-    <Compile Include="iTextSharpProcessor\iTextSharpPdfProcessor.cs" />
-    <Compile Include="LinkExtractor.cs" />
-    <Compile Include="NCrawlerModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyBag.cs" />
-    <Compile Include="RequestState.cs" />
-    <Compile Include="Services\CrawlerRulesService.cs" />
-    <Compile Include="Services\DummyRobot.cs" />
-    <Compile Include="Services\InMemoryCrawlerHistoryService.cs" />
-    <Compile Include="Services\InMemoryCrawlerQueueService.cs" />
-    <Compile Include="Services\LambdaFilter.cs" />
-    <Compile Include="Services\NativeTaskRunnerService.cs" />
-    <Compile Include="Services\RegexFilter.cs" />
-    <Compile Include="Services\RobotService.cs" />
-    <Compile Include="Services\SystemTraceLoggerService.cs" />
-    <Compile Include="Services\ThreadTaskRunnerService.cs" />
-    <Compile Include="Services\WebDownloaderV2.cs" />
     <Compile Include="SimpleCrawlDemo.cs" />
-    <Compile Include="Utils\AspectF.cs" />
-    <Compile Include="Utils\ColorConsoleTraceListener.cs" />
-    <Compile Include="Utils\CrawlerQueueServiceBase.cs" />
-    <Compile Include="Utils\DictionaryCache.cs" />
-    <Compile Include="Utils\DisposableBase.cs" />
-    <Compile Include="Utils\HistoryServiceBase.cs" />
-    <Compile Include="Utils\MemoryStreamWithFileBackingStore.cs" />
-    <Compile Include="Utils\TempFile.cs" />
-    <Compile Include="Utils\ThreadSafeCounter.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HtmlProcessor\Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

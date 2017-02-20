@@ -22,5 +22,25 @@ namespace BiggWhaleDataCollector.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\crawler\\daily\\")]
+        public string DataFolder {
+            get {
+                return ((string)(this["DataFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KVPNMVI\\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security" +
+            "=True;Connect ")]
+        public string NCrawlerConn {
+            get {
+                return ((string)(this["NCrawlerConn"]));
+            }
+        }
     }
 }

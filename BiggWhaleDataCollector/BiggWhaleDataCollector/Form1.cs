@@ -17,10 +17,6 @@ namespace BiggWhaleDataCollector
     using System.Windows.Forms;
     using Autofac;
     using Autofac.Core.Lifetime;
-    using BiggWhaleDataCollector.HtmlProcessor;
-    using BiggWhaleDataCollector.Interfaces;
-    using BiggWhaleDataCollector.Extensions;
-    using BiggWhaleDataCollector.Services;
 
     public partial class Form1 : Form
     {
@@ -120,7 +116,7 @@ namespace BiggWhaleDataCollector
 
         private void collectDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LinkExtractor.Run();
+            //LinkExtractor.Run();
         }
 
         private void Form1_Load(object sender, EventArgs e)
