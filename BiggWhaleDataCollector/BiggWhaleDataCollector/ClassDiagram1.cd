@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BiggWhaleDataCollector.AsyncRequestState&lt;T&gt;" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAQAEAJAIAAgAAAAIAAAgAAAAABABAACQAA=</HashCode>
+      <FileName>AsyncRequestState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.ContentIndexer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ContentIndexer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Crawler" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQoDoPqQCEyACQhgUQAAQI0NAAAAggjoJQBBEGBMUA=</HashCode>
+      <FileName>Crawler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.CrawlerQueueEntry" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEoAAAAAAAAAAAAIAAAAAAAAACAiA=</HashCode>
+      <FileName>CrawlerQueueEntry.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.CrawlStep" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEgAAAAAAAAAAAAIAgCAAAAAAABiA=</HashCode>
+      <FileName>CrawlStep.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Form1">
+    <Position X="26.25" Y="2.75" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="BiggWhaleDataCollector.Form1.fundDetail">
+        <TypeIdentifier>
+          <NewMemberFileName>Form1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BQCAAiAAASAAAAAAAACAgQACCAgAAAAAAgQAAMAAACA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.LinkExtractor" Collapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>LinkExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.CustomCrawlerRules" Collapsed="true">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>LinkExtractor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.NCrawlerModule" Collapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAQACAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NCrawlerModule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Program">
+    <Position X="26.5" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.PropertyBag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAgAAAAQAAGQAiAAgEAAKOAAkAIAQIAAWCgACAiA=</HashCode>
+      <FileName>PropertyBag.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.RequestState&lt;T&gt;" Collapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAQAEAJAIQAgAAAAAAAAgAAAAABABAACQAA=</HashCode>
+      <FileName>RequestState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.SimpleCrawlDemo" Collapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>SimpleCrawlDemo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.DumperStep" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SimpleCrawlDemo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.AfterDownloadEventArgs" Collapsed="true">
+    <Position X="3.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\AfterDownloadEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.BeforeDownloadEventArgs" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events\BeforeDownloadEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.CrawlFinishedEventArgs" Collapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Events\CrawlFinishedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.DownloadExceptionEventArgs" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAABAAAACAAA=</HashCode>
+      <FileName>Events\DownloadExceptionEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.DownloadProgressEventArgs" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAABAAAAAAAAAAAAAAIAAEAQACAAA=</HashCode>
+      <FileName>Events\DownloadProgressEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Events.PipelineExceptionEventArgs" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Events\PipelineExceptionEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.AspectExtensions" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAQAqEAAAAAgAGAAABAAAAAAACAAAABAAABAAAEE=</HashCode>
+      <FileName>Extensions\AspectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.EventHandlerExtensions" Collapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\EventHandlerExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.IAsyncResultExtensions" Collapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IAsyncResultExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.IEnumerableExtensions" Collapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\IEnumerableExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.ObjectExtensions" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAQAAAAAAAQAAAAEIIAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\ObjectExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.StreamExtensions" Collapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAIAAAAAAAAQAAAAAAABAAAAAAAAEAQAA=</HashCode>
+      <FileName>Extensions\StreamExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.StringExtensions" Collapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Extensions\StringExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.TaskExtensions" Collapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\TaskExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.UriExtensions" Collapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\UriExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Extensions.UrlExtensions" Collapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABBAAACAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Extensions\UrlExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Demo.Extensions.TextWriterExtensions" Collapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Extensions\TextWriterExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.LanguageDetection.Google.GoogleLanguageDetection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAIAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>GoogleLanguageDetection\GoogleLanguageDetection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.LanguageDetection.Google.LanguageDetector" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAIAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoogleLanguageDetection\GoogleLanguageDetection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.LanguageDetection.Google.LanguageDetectionResponseData" Collapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAgAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GoogleLanguageDetection\GoogleLanguageDetection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.ContentCrawlerRules" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAABEAAgAAgAABAAACAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>HtmlProcessor\ContentCrawlerRules.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.EMailEntityExtractionProcessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>HtmlProcessor\EMailEntityExtractionProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.HtmlDocumentProcessor" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAEAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>HtmlProcessor\HtmlDocumentProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.LinkExtractionProcessor" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HtmlProcessor\LinkExtractionProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.RegexSubstitution" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAgAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HtmlProcessor\RegexSubstitution.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.TextDocumentProcessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>HtmlProcessor\TextDocumentProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.Extensions.ExtendedHtmlUtility" Collapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAAAABAAAAIAAAAAAAAAAAAACIQAAAAA=</HashCode>
+      <FileName>HtmlProcessor\Extensions\ExtendedHtmlUtility.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.Extensions.HtmlToText" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAACAAGAAAAAAAAAAAAA=</HashCode>
+      <FileName>HtmlProcessor\Extensions\HtmlAgilityPackExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.Extensions.DocumentWithLinks" Collapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAACQAAAAGAAAAAAAEAA=</HashCode>
+      <FileName>HtmlProcessor\Extensions\HtmlAgilityPackExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.HtmlProcessor.Properties.Resources" Collapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAgAQAAgAAAAgAADEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.iTextSharpPdfProcessor.iTextSharpPdfProcessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>iTextSharpProcessor\iTextSharpPdfProcessor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Properties.Resources" Collapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Properties.Settings" Collapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.CrawlerRulesService" Collapsed="true">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAACAAAAAAAAAAACAAgCAAAAAAAAAA=</HashCode>
+      <FileName>Services\CrawlerRulesService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.DummyRobot" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Services\DummyRobot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.InMemoryCrawlerHistoryService" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAAAEAAAA=</HashCode>
+      <FileName>Services\InMemoryCrawlerHistoryService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.InMemoryCrawlerQueueService" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAA=</HashCode>
+      <FileName>Services\InMemoryCrawlerQueueService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.LambdaFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAIAAAgAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\LambdaFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.NativeTaskRunnerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Services\NativeTaskRunnerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.RegexFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RegexFilter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.RobotService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAABAQAgIAAAAAAAAAAAAAAAAAAAAAACBAA=</HashCode>
+      <FileName>Services\RobotService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.SystemTraceLoggerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAIAAAYAAAAAAABAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\SystemTraceLoggerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.ThreadTaskRunnerService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Services\ThreadTaskRunnerService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Services.WebDownloaderV2" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIAIAAAAASAiIQJgAAgAAAAAAQAABAIAEAAAABQAA=</HashCode>
+      <FileName>Services\WebDownloaderV2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.AspectF" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAACAAAAABMAAABAA=</HashCode>
+      <FileName>Utils\AspectF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.ColorConsoleTraceListener" Collapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAA=</HashCode>
+      <FileName>Utils\ColorConsoleTraceListener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.CrawlerQueueServiceBase" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAQAAACAAAAAAAAIAEAASAA=</HashCode>
+      <FileName>Utils\CrawlerQueueServiceBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.DictionaryCache" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAgAAAgBABAAAAABAAAAAAAAAAAAAIAAEAYAAA=</HashCode>
+      <FileName>Utils\DictionaryCache.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.DisposableBase" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAEACAAA=</HashCode>
+      <FileName>Utils\DisposableBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.HistoryServiceBase" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAEAAAAAAAAAAQAAAAAAAAAABAgAAAAAAAEEAAAA=</HashCode>
+      <FileName>Utils\HistoryServiceBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.MemoryStreamWithFileBackingStore" Collapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABIAACAAQAggGIAAAABgAAAAAAAAAAggAAGIACA=</HashCode>
+      <FileName>Utils\MemoryStreamWithFileBackingStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.TempFile" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAA=</HashCode>
+      <FileName>Utils\TempFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BiggWhaleDataCollector.Utils.ThreadSafeCounter" Collapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAABIAAAAAAAAAAAIAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Utils\ThreadSafeCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="BiggWhaleDataCollector.HtmlProcessor.Interfaces.ISubstitution" Collapsed="true">
+    <Position X="24.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HtmlProcessor\Interfaces\ISubstitution.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ICache" Collapsed="true">
+    <Position X="12.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAABABAAAAABAAAAAAAAAAAAAAAAAAYAAA=</HashCode>
+      <FileName>Interfaces\ICache.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ICrawlerHistory" Collapsed="true">
+    <Position X="14" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICrawlerHistory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ICrawlerQueue" Collapsed="true">
+    <Position X="15.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAACAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Interfaces\ICrawlerQueue.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ICrawlerRules" Collapsed="true">
+    <Position X="17.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICrawlerRules.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.IFilter" Collapsed="true">
+    <Position X="19.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IFilter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ILog" Collapsed="true">
+    <Position X="21" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAIAAAYAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.IPipelineStep" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPipelineStep.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.IPipelineStepWithTimeout" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPipelineStepWithTimeout.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.IRobot" Collapsed="true">
+    <Position X="22.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Interfaces\IRobot.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.ITaskRunner" Collapsed="true">
+    <Position X="12.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Interfaces\ITaskRunner.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BiggWhaleDataCollector.Interfaces.IWebDownloader" Collapsed="true">
+    <Position X="14" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAIAIAAAAASAiAAIAAAAAAAAAAQAAAAIAEAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IWebDownloader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="BiggWhaleDataCollector.Services.DownloadMethod" Collapsed="true">
+    <Position X="12.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\WebDownloaderV2.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

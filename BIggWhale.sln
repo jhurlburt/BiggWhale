@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggWhaleDataCollector", "BiggWhaleDataCollector\BiggWhaleDataCollector\BiggWhaleDataCollector.csproj", "{997B7A70-34ED-42F3-B5A7-EE351103281F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiggWhaleWebApp-prod", "BiggWhaleWebApp\BiggWhaleWebAppDemo\BiggWhaleWebApp-prod.csproj", "{3038F113-A4CF-495A-A24E-B8603751C08D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIggWhaleDatabaseLoad", "BIggWhaleDatabaseLoad\BIggWhaleDatabaseLoad\BIggWhaleDatabaseLoad.csproj", "{65D09200-4AAC-4058-B6C8-F88D1D017009}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{997B7A70-34ED-42F3-B5A7-EE351103281F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997B7A70-34ED-42F3-B5A7-EE351103281F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997B7A70-34ED-42F3-B5A7-EE351103281F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997B7A70-34ED-42F3-B5A7-EE351103281F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3038F113-A4CF-495A-A24E-B8603751C08D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3038F113-A4CF-495A-A24E-B8603751C08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3038F113-A4CF-495A-A24E-B8603751C08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3038F113-A4CF-495A-A24E-B8603751C08D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D09200-4AAC-4058-B6C8-F88D1D017009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D09200-4AAC-4058-B6C8-F88D1D017009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D09200-4AAC-4058-B6C8-F88D1D017009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D09200-4AAC-4058-B6C8-F88D1D017009}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
