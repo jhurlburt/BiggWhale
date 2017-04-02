@@ -6,6 +6,7 @@ using NCrawler.Extensions;
 using NCrawler.HtmlProcessor;
 using NCrawler.Interfaces;
 using NCrawler.Services;
+using System.Text.RegularExpressions;
 
 namespace NCrawler.Demo
 {
@@ -39,11 +40,18 @@ namespace NCrawler.Demo
 				new HtmlDocumentProcessor(), // Process html
 				new DumperStep())
 				{
-					MaximumThreadCount = 2,
-					MaximumCrawlDepth = 2,
-                MaximumCrawlCount = 10000,
-                ExcludeFilter = Program.ExtensionsToSkip,
-				})
+					MaximumThreadCount = 5,
+					MaximumCrawlDepth = 3,
+                    MaximumCrawlCount = 10000,                
+                    ExcludeFilter = Program.ExtensionsToSkip
+                //,
+                //IncludeFilter = new[]
+                //        {
+
+                //            (RegexFilter)new Regex(@"((^http://www.cefa.com/[a-zA-Z0-9\-\.]*)?()$)",
+                //                RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase)
+                //        }
+            })
 			{
 				// Begin crawl
 				c.Crawl();
@@ -69,13 +77,26 @@ namespace NCrawler.Demo
 			m_CrawlerHistory = crawlerHistory;
 		}
 
-		#endregion
+        #endregion
 
-		#region Instance Methods
+        #region Instance Methods
 
-		public override bool IsExternalUrl(Uri uri)
+        public override bool IsAllowedUrl(Uri uri, CrawlStep referrer)
+        {
+            // True if origin base uri is not equal to the crawler uri
+            if (base.IsExternalUrl(uri))
+            {
+                return false;
+            }
+            if (!base.IsAllowedUrl(uri, referrer))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public override bool IsExternalUrl(Uri uri)
 		{
-			// Is External Url
 			if (!base.IsExternalUrl(uri))
 			{
 				return false;
@@ -95,7 +116,7 @@ namespace NCrawler.Demo
 					MaximumThreadCount = 1,
 					MaximumCrawlDepth = 2,
 					MaximumCrawlCount = 10000,
-					ExcludeFilter = Program.ExtensionsToSkip,
+                    ExcludeFilter = Program.ExtensionsToSkip,
 				})
 			{
 				// Crawl external site

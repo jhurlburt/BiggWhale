@@ -73,16 +73,19 @@
       <HintPath>References\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="NCrawler">
-      <HintPath>References\NCrawler.dll</HintPath>
+      <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\NCrawler\bin\Release\NCrawler.dll</HintPath>
     </Reference>
     <Reference Include="NCrawler.Demo">
       <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\Binaries\Demo\NCrawler.Demo.exe</HintPath>
+    </Reference>
+    <Reference Include="NCrawler.FileStorageServices">
+      <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\NCrawler.FileStorageServices\bin\Release\NCrawler.FileStorageServices.dll</HintPath>
     </Reference>
     <Reference Include="NCrawler.HtmlProcessor">
       <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\Binaries\NCrawler.HtmlProcessor.dll</HintPath>
     </Reference>
     <Reference Include="NCrawler.LanguageDetection.Google">
-      <HintPath>References\NCrawler.LanguageDetection.Google.dll</HintPath>
+      <HintPath>..\..\ncrawler-master\ncrawler-master\Net 4.0\Binaries\NCrawler.LanguageDetection.Google.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>References\Newtonsoft.Json.dll</HintPath>
@@ -103,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClosedEndFundCrawler.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

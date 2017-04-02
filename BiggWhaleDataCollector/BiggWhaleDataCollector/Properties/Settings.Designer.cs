@@ -36,7 +36,8 @@ namespace BiggWhaleDataCollector.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KVPNMVI\\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security" +
-            "=True;Connect ")]
+            "=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIn" +
+            "tent=ReadWrite;MultiSubnetFailover=False;")]
         public string NCrawlerConn {
             get {
                 return ((string)(this["NCrawlerConn"]));

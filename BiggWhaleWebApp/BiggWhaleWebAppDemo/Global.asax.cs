@@ -17,7 +17,7 @@ namespace BiggWhaleWebAppDemo
             // Code that runs on application startup
             //routes.Ignore("{resource}.axd/{*pathInfo}");
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AuthConfig.RegisterOpenAuth();
+            //AuthConfig.RegisterOpenAuth();
         }
 
         void Application_End(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="About Bigg Whale" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="BiggWhaleWebAppDemo.About" %>
+﻿<%@ Page Title="About Bigg Whale" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="BiggWhaleWebAppDemo.About" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">

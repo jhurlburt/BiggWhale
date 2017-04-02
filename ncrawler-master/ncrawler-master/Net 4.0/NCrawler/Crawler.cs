@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -61,7 +61,7 @@ namespace NCrawler
 			m_LifetimeScope = NCrawlerModule.Container.BeginLifetimeScope();
 			m_BaseUri = crawlStart;
 			MaximumCrawlDepth = null;
-			AdhereToRobotRules = false;
+			AdhereToRobotRules = true;
 			MaximumThreadCount = 1;
 			Pipeline = pipeline;
 			UriSensitivity = UriComponents.HttpRequestUrl;
@@ -106,43 +106,8 @@ namespace NCrawler
 			{
 				m_Crawling = true;
 				m_Runtime = Stopwatch.StartNew();
-                List<String> urlList = new List<string>();
-                if (m_CrawlerQueue.Count == 0)
-                {
-                    // Query the database for the list of mandatory urls to be crawled
-                    //using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
-                    using (SqlConnection connection = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["NCrawler.Demo.Properties.Settings.NCrawlerConn"].ConnectionString))
-                    {
-                        using (SqlCommand command = connection.CreateCommand())
-                        {
-                            command.CommandText = "SELECT [Crawl Url] from [Crawl Urls] ";
-                            try
-                            {
-                                connection.Open();
-                                using (SqlDataReader reader = command.ExecuteReader())
-                                {
-                                    while (reader.Read())
-                                    {
-                                        urlList.Add(reader["Crawl Url"].ToString());
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.ToString());
-                            }
-                        }
-                    }
 
-                    Uri addedStep;
-                    foreach (string detailUrl in urlList)
-                    {
-                        addedStep = new Uri(detailUrl);
-                        AddStep(addedStep, 1);
-                    }
-                }
-
-                if (m_CrawlerQueue.Count > 0)
+				if (m_CrawlerQueue.Count > 0)
 				{
 					// Resume enabled
 					ProcessQueue();
@@ -199,7 +164,7 @@ namespace NCrawler
 				return;
 			}
 
-			if ((uri.Scheme != "https" && uri.Scheme != "http") || // Only accept http(s) schema
+			if ((uri.Scheme != Uri.UriSchemeHttps && uri.Scheme != Uri.UriSchemeHttp) || // Only accept http(s) schema
 				(MaximumCrawlDepth.HasValue && MaximumCrawlDepth.Value > 0 && depth >= MaximumCrawlDepth.Value) ||
 				!m_CrawlerRules.IsAllowedUrl(uri, referrer) ||
 				!m_CrawlerHistory.Register(uri.GetUrlKeyString(UriSensitivity)))
@@ -239,7 +204,7 @@ namespace NCrawler
 			m_Logger.Verbose("Cancelled crawler from {0}", m_BaseUri);
 			if (m_Cancelled)
 			{
-				throw new OperationCanceledException("Already cancelled once");
+				throw new ConstraintException("Already cancelled once");
 			}
 
 			m_Cancelled = true;

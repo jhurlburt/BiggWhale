@@ -117,6 +117,7 @@ namespace BiggWhaleDataCollector
         private void collectDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //LinkExtractor.Run();
+            ClosedEndFundCrawler.Run();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -1446,7 +1447,7 @@ namespace BiggWhaleDataCollector
             string fundId = string.Empty;
             int rowcount = 0;
             // Check for the fund id
-            using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
             using (SqlCommand command = connection.CreateCommand())
             {
                 command.CommandText = "SELECT id from Funds WHERE Name = @name and [Ticker Symbol] = @ticker ";
@@ -1476,7 +1477,7 @@ namespace BiggWhaleDataCollector
             {
                 fundId = fund_id.ToString().Replace("{", string.Empty).Replace("}", string.Empty).Replace("-", string.Empty);
                 // Insert Funds record
-                using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "INSERT INTO Funds (id, Name, [Fund Type], [Ticker Symbol], [Asset Class], [Inception Date], Advisor, [Manager and Tenure], Phone, Website, [Total Net Assets], [Total Net Assets Date], [Percent Leveraged Assets], [Percent Leveraged Assets Date], [Portfolio Turnover], [Management Fees], [Expense Ratio], [Alternative Minimum Tax], [Fund Objective], Yield) ";
@@ -1573,7 +1574,7 @@ namespace BiggWhaleDataCollector
             else
             {
                 // update the record
-                using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "UPDATE Funds SET Advisor = @advisor, [Manager and Tenure] = @managerAndTenure, Phone = @phone, Website = @website, [Total Net Assets] = @totalNetAssets, [Total Net Assets Date] = @totalNetAssetsDate, [Percent Leveraged Assets] = @percentLeveragedAssets, [Percent Leveraged Assets Date] = @percentLeveragedAssetsDate, [Portfolio Turnover] = @portfolioTurnover, [Management Fees] = @managementFees, [Expense Ratio] = @expenseRatio, [Alternative Minimum Tax] = @alternativeMinimumTax, [Fund Objective] = @fundObjective, Yield = @yield WHERE id = @id ";
@@ -1673,13 +1674,13 @@ namespace BiggWhaleDataCollector
             DateTime crawlDate = fund.CrawlDate;
 
 
-            using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
             using (SqlCommand command = connection.CreateCommand())
             {
-                command.CommandText = "INSERT INTO FundDetails (id, fund_id, [Create Date], [Created By], [Crawl Date], OneYearLipperAvg, TenYearMarketReturn, FiveYearMarketReturn, OneYearMarketReturn, YTDMarketReturn, TenYearMarketReturnRank, FiveYearMarketReturnRank, OneYearMarketReturnRank, YTDMarketReturnRank, TenYearNAVReturn, FiveYearNAVReturn, OneYearNAVReturn, YTDNAVReturn, TenYearNAVReturnRank, FiveYearNAVReturnRank, OneYearNAVReturnRank, YTDNAVReturnRank, TenYearPremiumDiscountAvg, FiveYearPremiumDiscountAvg, YTDPremiumDiscountAvg, NAV, MarketPrice, NetChange, MarketChange, OneYearNAVReturnAct, TwelveMonthYieldDate, DefinedIncomeOnlyYield, DistributionYield, MostRecentIncimeDividend, MostRecentIncomeDividendDate, MostRecentCapGainDiviednd, MostRecentCapGainDividendDate, MonthlyYTDDividends, YTDCapGains) ";
-                command.CommandText += "VALUES(@id,@fundId,@createDate, @createdBy, @crawlDate, @oneYearLipperAvg, @tenYearMarketReturn, @fiveYearMarketReturn, @oneYearMarketReturn, @ytdMarketReturn, @tenYearMarketReturnRank, @fiveYearMarketReturnRank, @oneYearMarketReturnRank, @ytdMarketReturnRank, @tenYearNAVReturn, @fiveYearNAVReturn, @oneYearNAVReturn, @ytdNAVReturn, @tenYearNAVReturnRank, @fiveYearNAVReturnRank, @oneYearNAVReturnRank, @ytdNAVReturnRank, @tenYearPremiumDiscountAvg, @fiveYearPremiumDiscountAvg, @ytdPremiumDiscountAvg, @nav, @marketPrice, @netChange, @marketChange, @oneYearNAVReturnAct, @twelveMonthYieldDate, @definedIncomeOnlyYield, @distributionYield, @mostRecentIncomeDividend, @mostRecentIncomeDividendDate, @mostRecentCapGainDividend, @mostRecentCapGainDividendDate, @monthlyYTDDiviends, @ytdCapGains)";
+                command.CommandText = "INSERT INTO FundDetails (id, fund_id, [Create Date], [Created By], [Crawl Date], OneYearLipperAvg, TenYearMarketReturn, FiveYearMarketReturn, OneYearMarketReturn, YTDMarketReturn, TenYearMarketReturnRank, FiveYearMarketReturnRank, OneYearMarketReturnRank, YTDMarketReturnRank, TenYearNAVReturn, FiveYearNAVReturn, OneYearNAVReturn, YTDNAVReturn, TenYearNAVReturnRank,              FiveYearNAVReturnRank, OneYearNAVReturnRank, YTDNAVReturnRank, TenYearPremiumDiscountAvg, FiveYearPremiumDiscountAvg, YTDPremiumDiscountAvg, NAV, MarketPrice, NetChange, MarketChange, OneYearNAVReturnAct, TwelveMonthYieldDate, DefinedIncomeOnlyYield, DistributionYield, MostRecentIncimeDividend, MostRecentIncomeDividendDate, MostRecentCapGainDiviednd, MostRecentCapGainDividendDate, MonthlyYTDDividends, YTDCapGains) ";
+                command.CommandText += "VALUES(@id,@fundId,@createDate, @createdBy, @crawlDate, @oneYearLipperAvg, @tenYearMarketReturn, @fiveYearMarketReturn, @oneYearMarketReturn, @ytdMarketReturn, @tenYearMarketReturnRank, @fiveYearMarketReturnRank, @oneYearMarketReturnRank, @ytdMarketReturnRank, @tenYearNAVReturn, @fiveYearNAVReturn, @oneYearNAVReturn, @ytdNAVReturn, @tenYearNAVReturnRank,                        @fiveYearNAVReturnRank, @oneYearNAVReturnRank, @ytdNAVReturnRank, @tenYearPremiumDiscountAvg, @fiveYearPremiumDiscountAvg, @ytdPremiumDiscountAvg, @nav, @marketPrice, @netChange, @marketChange, @oneYearNAVReturnAct, @twelveMonthYieldDate, @definedIncomeOnlyYield, @distributionYield, @mostRecentIncomeDividend, @mostRecentIncomeDividendDate, @mostRecentCapGainDividend, @mostRecentCapGainDividendDate, @monthlyYTDDiviends, @ytdCapGains)";
                 command.CommandText = "INSERT INTO FundDetails (id, fund_id, [Create Date], [Created By], [Crawl Date], OneYearLipperAvg,  TenYearMarketReturn,  FiveYearMarketReturn,  OneYearMarketReturn,  YTDMarketReturn,  TenYearMarketReturnRank,  FiveYearMarketReturnRank,  OneYearMarketReturnRank,  YTDMarketReturnRank,  TenYearNAVReturn,  FiveYearNAVReturn,  OneYearNAVReturn,  YTDNAVReturn,  TenYearNAVReturnRank,  FiveYearNAVReturnRank,  OneYearNAVReturnRank,  YTDNAVReturnRank,  TenYearPremiumDiscountAvg,  FiveYearPremiumDiscountAvg,  YTDPremiumDiscountAvg,  NAV,  MarketPrice,  NetChange,  MarketChange, OneYearNAVReturnAct, TwelveMonthYieldDate, DefinedIncomeOnlyYield, DistributionYield, MostRecentIncimeDividend, MostRecentCapGainDiviednd, MonthlyYTDDividends, YTDCapGains) ";
-                command.CommandText += "VALUES(                @id, @fundId, @createDate,   @createdBy,   @crawlDate,   @oneYearLipperAvg, @tenYearMarketReturn, @fiveYearMarketReturn, @oneYearMarketReturn, @ytdMarketReturn, @tenYearMarketReturnRank, @fiveYearMarketReturnRank, @oneYearMarketReturnRank, @ytdMarketReturnRank, @tenYearNAVReturn, @fiveYearNAVReturn, @oneYearNAVReturn, @ytdNAVReturn, @tenYearNAVReturnRank, @fiveYearNAVReturnRank, @oneYearNAVReturnRank, @ytdNAVReturnRank, @tenYearPremiumDiscountAvg, @fiveYearPremiumDiscountAvg, @ytdPremiumDiscountAvg, @nav, @marketPrice, @netChange, @marketChange, @oneYearNAVReturnAct, @twelveMonthYieldDate, @definedIncomeOnlyYield, @distributionYield, @mostRecentIncomeDividend, @mostRecentCapGainDividend, @monthlyYTDDiviends, @ytdCapGains)";
+                command.CommandText += "VALUES(@id, @fundId, @createDate,   @createdBy,   @crawlDate,   @oneYearLipperAvg, @tenYearMarketReturn, @fiveYearMarketReturn, @oneYearMarketReturn, @ytdMarketReturn, @tenYearMarketReturnRank, @fiveYearMarketReturnRank, @oneYearMarketReturnRank, @ytdMarketReturnRank, @tenYearNAVReturn, @fiveYearNAVReturn, @oneYearNAVReturn, @ytdNAVReturn, @tenYearNAVReturnRank,                @fiveYearNAVReturnRank, @oneYearNAVReturnRank, @ytdNAVReturnRank, @tenYearPremiumDiscountAvg, @fiveYearPremiumDiscountAvg, @ytdPremiumDiscountAvg, @nav, @marketPrice, @netChange, @marketChange, @oneYearNAVReturnAct, @twelveMonthYieldDate, @definedIncomeOnlyYield, @distributionYield, @mostRecentIncomeDividend, @mostRecentCapGainDividend, @monthlyYTDDiviends, @ytdCapGains)";
                 try
                 {
                     SqlParameter idParam = new SqlParameter("@id", SqlDbType.VarChar);
@@ -1834,7 +1835,7 @@ namespace BiggWhaleDataCollector
             Guid fund_asset_id = Guid.NewGuid();
             string fundAssetId = fund_asset_id.ToString().Replace("{", string.Empty).Replace("}", string.Empty).Replace("-", string.Empty);
 
-            using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
             using (SqlCommand command = connection.CreateCommand())
             {
                 command.CommandText = "INSERT INTO FundAssets (id, fund_id, [Top Funds Date], [Top Funds], [Total Net Assets Date], [Total Net Assets], [Quality Date], [Quality], [Crawl Date]) ";
@@ -1935,7 +1936,7 @@ namespace BiggWhaleDataCollector
         public bool saveSiteToDatabase(string siteName, string siteUrl)
         {
             // Insert Funds record
-            using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
             using (SqlCommand command = connection.CreateCommand())
             {
                 command.CommandText = "INSERT INTO Sites (column) VALUES (@param)";
@@ -1949,7 +1950,7 @@ namespace BiggWhaleDataCollector
 
             // Insert FundAssets record
             // Insert Funds record
-            using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
             using (SqlCommand command = connection.CreateCommand())
             {
                 command.CommandText = "INSERT INTO FundAssets (id, fund_id, [Top Funds Date], [Top Funds], [Quality Date], [Quality], [Crawl Date]) ";

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TopHoldings.aspx.cs" Inherits="BiggWhaleWebAppDemo.TopHoldings" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TopHoldings.aspx.cs" Inherits="BiggWhaleWebAppDemo.TopHoldings" %>
 
 <!DOCTYPE html>
 

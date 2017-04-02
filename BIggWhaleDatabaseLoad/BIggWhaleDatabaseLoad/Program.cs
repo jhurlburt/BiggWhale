@@ -738,7 +738,7 @@
                         {
                             fundList.Add(fund);
                             // Insert into sql server
-                            bool dbStatus = saveFundToDatabase(fund);
+                            bool dbStatus = FundDAO.SaveToDatabase();
                         }
 
                     }

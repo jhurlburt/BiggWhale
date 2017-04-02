@@ -52,10 +52,10 @@ namespace NCrawler.Test.Helpers
 			NCrawlerModule.Setup(new IsolatedStorageModule(false), new TestModule());
 		}
 
-		public static void SetupSqLiteStorage()
-		{
-			//NCrawlerModule.Setup(new SqLiteServicesModule(false), new TestModule());
-		}
+		//public static void SetupSqLiteStorage()
+		//{
+  //          NCrawlerModule.Setup(new SqLiteServicesModule(false), new TestModule());
+  //      }
 
 		#endregion
 	}

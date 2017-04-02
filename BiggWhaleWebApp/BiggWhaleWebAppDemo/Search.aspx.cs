@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace BiggWhaleWebAppDemo
 {
-    public partial class _Default : Page
+    public partial class Search : Page
     {
         public int bottom;
         public int weekMonthBottom;
@@ -69,7 +69,7 @@ namespace BiggWhaleWebAppDemo
             html.Append("<br></br>");
             html.Append("<font size='5' color='blue'>" + /*dt.Rows[0][1]*/classSelect.SelectedValue + "</font><br></br>");
             html.Append("<div style='width:100%; height:600px; overflow:auto;'>");
-            if (classSelect.SelectedIndex == 0)
+            if (classSelect.SelectedIndex == 0) //All Asset Classes
             {
                 dt = this.GetTopView();
                 html.Append("<table border = '1' height='80px' width='100%' bottom='0%'>");

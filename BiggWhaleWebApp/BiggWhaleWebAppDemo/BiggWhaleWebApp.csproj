@@ -231,12 +231,14 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="Funds.edmx.sql" />
     <Content Include="Images\accent.png" />
+    <Content Include="Images\annual-report-web-crop.jpg" />
     <Content Include="Images\asc.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\desc.png" />
     <Content Include="Images\Falling2.png" />
     <Content Include="Images\heroAccent.png" />
     <Content Include="Images\logo_jonas_128_notext.png" />
+    <Content Include="Images\marketing-w-reports-web.jpg" />
     <Content Include="Images\orderedList0.png" />
     <Content Include="Images\orderedList1.png" />
     <Content Include="Images\orderedList2.png" />
@@ -249,7 +251,7 @@
     <Content Include="Images\orderedList9.png" />
     <Content Include="Images\Rising2.png" />
     <Content Include="Images\Steady2.png" />
-    <Content Include="Login.aspx" />
+    <Content Include="Default.aspx" />
     <EntityDeploy Include="Funds.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Funds.Designer.cs</LastGenOutput>
@@ -370,6 +372,13 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -405,18 +414,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Public.Master.cs">
+      <DependentUpon>Public.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public.Master.designer.cs">
+      <DependentUpon>Public.Master</DependentUpon>
     </Compile>
     <Compile Include="Site.cs">
       <DependentUpon>Funds.tt</DependentUpon>
@@ -459,6 +468,7 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Public.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

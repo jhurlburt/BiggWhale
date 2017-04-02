@@ -8,9 +8,9 @@
     <Setting Name="NCrawlerConn" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=DESKTOP-KVPNMVI\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security=True;Connect &lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-KVPNMVI\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;&lt;/ConnectionString&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=DESKTOP-KVPNMVI\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security=True;Connect </Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-KVPNMVI\SQLEXPRESS;Initial Catalog=CEF_DB;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

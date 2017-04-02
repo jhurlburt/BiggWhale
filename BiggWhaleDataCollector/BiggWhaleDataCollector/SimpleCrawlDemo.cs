@@ -36,6 +36,22 @@ namespace BiggWhaleDataCollector.NCrawler.Demo
             NCrawlerModule.Setup();
             Console.Out.WriteLine("http://www.cefa.com/FundSelector/");
 
+            /*
+            int count = 0;
+            foreach (string url in new StringPatternGenerator("http://ncrawler[a,b,c,d,e,f].codeplex.com/view[0-10].aspx?param1=[a-c]&param2=[D-F]"))
+            {
+                Assert.IsTrue(crawlerHistory.Register(url));
+                Assert.IsFalse(crawlerHistory.Register(url));
+                count++;
+                Assert.AreEqual(count, crawlerHistory.RegisteredCount);
+            }
+
+            if (crawlerHistory is IDisposable)
+            {
+                ((IDisposable)crawlerHistory).Dispose();
+            }
+            */
+
             // Setup crawler to crawl http://www.cefa.com/FundSelector/
             // with 1 thread adhering to robot rules, and maximum depth
             // of 2 with 4 pipeline steps:
@@ -138,7 +154,7 @@ namespace BiggWhaleDataCollector.NCrawler.Demo
                     int rowcount = 0;
                     // Query the database for the for the detail url and insert it if it is not already in the list
                     //using (SqlConnection connection = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
-                    using (SqlConnection connection = new SqlConnection(BiggWhaleDataCollector.Properties.Settings.Default.NCrawlerConn))
+                    using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
                     {
                         using (SqlCommand command = connection.CreateCommand())
                         {
@@ -170,7 +186,7 @@ namespace BiggWhaleDataCollector.NCrawler.Demo
                             // insert the row
                             //using (SqlConnection insertCon = new SqlConnection("Server=nabccrmdev.cloudapp.net;Database=CEF_db;User Id=cef_admin; Password = BW2016!; "))
                             //using (SqlConnection insertCon = new SqlConnection("Server=tcp:biggwhaledb.database.windows.net,1433;Initial Catalog=CEF_db;Persist Security Info=False;User ID=cef_admin;Password=BiggWhale2016!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-                            using (SqlConnection insertCon = new SqlConnection(BiggWhaleDataCollector.Properties.Settings.Default.NCrawlerConn))
+                            using (SqlConnection insertCon = new SqlConnection(Properties.Settings.Default.NCrawlerConn))
                             {
                                 string saveUrl = "INSERT into [Crawl Urls] ([Site Name],[Crawl Url]) VALUES (@siteName,@newCrawlUrl)";
 

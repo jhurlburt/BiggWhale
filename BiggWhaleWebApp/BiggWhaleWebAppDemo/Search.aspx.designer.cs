@@ -10,7 +10,7 @@
 namespace BiggWhaleWebAppDemo {
     
     
-    public partial class _Default {
+    public partial class Search {
         
         /// <summary>
         /// Label3 control.

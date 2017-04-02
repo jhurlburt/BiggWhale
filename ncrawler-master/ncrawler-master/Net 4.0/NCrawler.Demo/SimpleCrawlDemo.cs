@@ -21,7 +21,7 @@ using NCrawler.Extensions;
 using NCrawler.HtmlProcessor;
 using NCrawler.Interfaces;
 using NCrawler.LanguageDetection.Google;
-
+//using NCrawler.FundServices;
 namespace NCrawler.Demo
 {
 	public class SimpleCrawlDemo
@@ -31,9 +31,9 @@ namespace NCrawler.Demo
 		public static void Run()
 		{
 			NCrawlerModule.Setup();
-			Console.Out.WriteLine("http://www.cefa.com/FundSelector/");
+			Console.Out.WriteLine("http://www.cefa.com/");
 
-            // Setup crawler to crawl http://www.cefa.com/FundSelector/
+            // Setup crawler to crawl http://www.cefa.com/
             // with 1 thread adhering to robot rules, and maximum depth
             // of 2 with 4 pipeline steps:
             //	* Step 1 - The Html Processor, parses and extracts links, text and more from html
@@ -41,10 +41,8 @@ namespace NCrawler.Demo
             //  * Step 3 - Try to determine language based on page, based on text extraction, using google language detection
             //  * Step 4 - Dump the information to the console, this is a custom step, see the DumperStep class
             using (Crawler c = new Crawler(new Uri("http://www.cefa.com/"),
-				new HtmlDocumentProcessor(), // Process html
-				//new iTextSharpPdfProcessor.iTextSharpPdfProcessor(),
-				//new GoogleLanguageDetection(),
-				new DumperStep())
+			    new HtmlDocumentProcessor(), // Process html
+                new DumperStep())
 				{
 					// Custom step to visualize crawl
 					MaximumThreadCount = 4,

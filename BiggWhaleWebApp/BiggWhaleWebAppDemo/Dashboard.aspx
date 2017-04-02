@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Title="Dashboard" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="BiggWhaleWebAppDemo.Dashboard" %>
+﻿<%@ Page Language="C#" Title="Dashboard" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="BiggWhaleWebAppDemo.Dashboard" %>
 
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
