@@ -13,147 +13,147 @@ namespace BiggWhaleWebAppDemo {
     public partial class Dashboard {
         
         /// <summary>
-        /// Label1 control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// navReturnPercentFilter2 control.
+        /// lblSelectMinNavReturn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox navReturnPercentFilter2;
+        protected global::System.Web.UI.WebControls.Label lblSelectMinNavReturn;
         
         /// <summary>
-        /// Label2 control.
+        /// txtNavReturnPct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox txtNavReturnPct;
         
         /// <summary>
-        /// timePeriodSelect control.
+        /// lblTimePdSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList timePeriodSelect;
+        protected global::System.Web.UI.WebControls.Label lblTimePdSelect;
         
         /// <summary>
-        /// Label8 control.
+        /// cboTimePeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.DropDownList cboTimePeriod;
         
         /// <summary>
-        /// classSelect control.
+        /// lblAssetClassSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList classSelect;
+        protected global::System.Web.UI.WebControls.Label lblAssetClassSelect;
         
         /// <summary>
-        /// Button1 control.
+        /// cboClassSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.DropDownList cboClassSelect;
         
         /// <summary>
-        /// Chart1 control.
+        /// btnAllClasses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        protected global::System.Web.UI.WebControls.Button btnAllClasses;
         
         /// <summary>
-        /// Label7 control.
+        /// pnlChart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.Panel pnlChart;
         
         /// <summary>
-        /// GridView1 control.
+        /// chrAssetClass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart chrAssetClass;
         
         /// <summary>
-        /// FundAssetClasses control.
+        /// lblAssetKey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FundAssetClasses;
+        protected global::System.Web.UI.WebControls.Label lblAssetKey;
         
         /// <summary>
-        /// Label9 control.
+        /// grdAssetKey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label9;
+        protected global::System.Web.UI.WebControls.GridView grdAssetKey;
         
         /// <summary>
-        /// GridView2 control.
+        /// dsAssetClasses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsAssetClasses;
         
         /// <summary>
-        /// FundSummaryDetails control.
+        /// lblAssetClassFundReturns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FundSummaryDetails;
+        protected global::System.Web.UI.WebControls.Label lblAssetClassFundReturns;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// grdFundSummaryDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.GridView grdFundSummaryDetail;
         
         /// <summary>
-        /// DashboardTable1 control.
+        /// dsFundSummaryDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DashboardTable1;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsFundSummaryDetail;
     }
 }

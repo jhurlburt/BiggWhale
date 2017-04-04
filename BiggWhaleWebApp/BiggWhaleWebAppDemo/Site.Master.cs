@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -67,7 +68,55 @@ namespace BiggWhaleWebAppDemo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    string page = Path.GetFileNameWithoutExtension(Request.AppRelativeCurrentExecutionFilePath);
+                    string pageDirectory = Path.GetDirectoryName(Request.AppRelativeCurrentExecutionFilePath);
 
+                    navMainAnonymous.Visible = !Request.IsAuthenticated;
+                    navMainAuthenticated.Visible = Request.IsAuthenticated;
+
+                    string category = Request.QueryString.Count > 0 ? Request.QueryString[0] : string.Empty;
+                    if (pageDirectory.Length > 3)
+                    {
+                        pageDirectory = pageDirectory.Substring(2, pageDirectory.Length - 2);
+                    }
+                    if (pageDirectory != null && pageDirectory.Length > 0 && page != null && page.Length > 0)
+                    {
+                        switch (pageDirectory)
+                        {
+                            case "~":
+                                switch (page)
+                                {
+                                    case "Dashboard":
+                                        lnkDashboard.CssClass = "current-menu-item";
+                                        break;
+                                    case "Search":
+                                        lnkSearch.CssClass = "current-menu-item";
+                                        break;
+                                    case "Contact":
+                                        lnkContact.CssClass = "current-menu-item";
+                                        break;
+                                }
+                                break;
+                            case "Account":
+                                switch (page)
+                                {
+                                    case "Login":
+                                        lnkLogin.CssClass = "current-menu-item";
+                                        break;
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

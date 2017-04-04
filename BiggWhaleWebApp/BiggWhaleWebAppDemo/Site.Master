@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.Master.cs" Inherits="BiggWhaleWebAppDemo.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="BiggWhaleWebAppDemo.SiteMaster" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,55 +31,55 @@
             <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
             <asp:ScriptReference Name="WebFormsBundle" />
             <%--Site Scripts--%>
-
         </Scripts>
     </asp:ScriptManager>
     <header>
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <img src="../Images/logo_jonas_128_notext.png" />
+                    <a href="~/Default.aspx">
+                        <img src="../Images/logo_jonas_128_notext.png" />
+                    </a>
                 </p>
             </div>
             <div class="float-right">
-                <section id="login">
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <section>
+                    <asp:LoginView id="loginView" runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <ul>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login.aspx">Log in</a></li>
-                            </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            <p>
-                                Hello, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account">
-                                    <asp:LoginName runat="server" CssClass="username" /></a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                            <p style="text-align: right;">
+                                Hello, <a runat="server" class="username" href="~/Account/Manage.aspx" title="Manage your account"><asp:LoginName runat="server" CssClass="username" /></a>!
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Logoff" LogoutPageUrl="~/Default.aspx" />
                             </p>
                         </LoggedInTemplate>
                     </asp:LoginView>
+                    <nav id="navMainAnonymous" runat="server">
+                        <ul>
+                            <li><asp:HyperLink ID="lnkLogin" NavigateUrl="~/Account/Login.aspx" runat="server">Login</asp:HyperLink></li>
+                        </ul>
+                    </nav>
+                    <nav id="navMainAuthenticated" runat="server">
+                        <ul>
+                            <li><asp:HyperLink ID="lnkDashboard" NavigateUrl="~/Dashboard.aspx" runat="server">Dashboard</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="lnkSearch" NavigateUrl="~/Search.aspx" runat="server">Advanced Search</asp:HyperLink></li>
+                            <li><asp:HyperLink ID="lnkContact" NavigateUrl="~/Contact.aspx" runat="server">Contact</asp:HyperLink></li>
+                        </ul>
+                    </nav>
                 </section>
-                <nav>
-                    <ul id="menu">
-                        <li><a runat="server" href="~/Search.aspx">Advanced Search</a></li>
-                        <li><a runat="server" href="~/Dashboard.aspx">Dashboard</a></li>
-                        <li><a runat="server" href="~/About.aspx">About</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </header>
-    <div id="body">
+    <div id="main">
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
     </div>
-    <footer>
+    <footer id="SiteFooter">
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - Bigg Whale, LLC&nbsp; All Rights Reserved</p>
+                <p>&copy; <%--Framework Scripts--%>- Bigg Whale, LLC&nbsp; All Rights Reserved</p>
             </div>
         </div>
     </footer>

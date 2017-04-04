@@ -25,7 +25,7 @@ namespace BiggWhaleWebAppDemo.Account
             if (!IsPostBack)
             {
                 // Determine the sections to render
-                var hasLocalPassword = OpenAuth.HasLocalPassword(User.Identity.Name);
+                var hasLocalPassword = true;
                 setPassword.Visible = !hasLocalPassword;
                 changePassword.Visible = hasLocalPassword;
 

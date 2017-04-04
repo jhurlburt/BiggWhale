@@ -27,26 +27,26 @@ namespace BiggWhaleWebAppDemo
         {
             //if (!this.IsPostBack)
             //{
-                //Building an HTML string.
+            //Building an HTML string.
 
-                //Get classes
-                //String currentClass = "AMEX";
-                // classes = this.getClasses(currentClass);
-                /*html.Append("<select id='topFundsSelect'>");
-                foreach (DataRow cl in classes.Rows)
-                {
-                    String value = (string)cl[0];
-                    value = value.Split('/')[1];
-                    html.Append("<option value='" + value + "'>" + value + "</option>");
-                }
-                html.Append("</select>");*/
+            //Get classes
+            //String currentClass = "AMEX";
+            // classes = this.getClasses(currentClass);
+            /*html.Append("<select id='topFundsSelect'>");
+            foreach (DataRow cl in classes.Rows)
+            {
+                String value = (string)cl[0];
+                value = value.Split('/')[1];
+                html.Append("<option value='" + value + "'>" + value + "</option>");
+            }
+            html.Append("</select>");*/
 
             if (!this.IsPostBack)
             {
                 updateClassList();
                 updateClasses();
             }
-                //Populating a DataTable from database.
+            //Populating a DataTable from database.
             //updateClasses();
 
             /*if (!this.IsPostBack)
@@ -60,316 +60,314 @@ namespace BiggWhaleWebAppDemo
         private void updateDataTable()
         {
             StringBuilder html = new StringBuilder();
-            //if (dt.Rows.Count == 0)
-            DataTable dt = this.GetData();
-            DataTable topFunds = this.GetTopFunds();
-            DataTable beta = this.GetBeta();
+            //DataTable dt = null;
 
             //Table start.
-            html.Append("<br></br>");
-            html.Append("<font size='5' color='blue'>" + /*dt.Rows[0][1]*/classSelect.SelectedValue + "</font><br></br>");
-            html.Append("<div style='width:100%; height:600px; overflow:auto;'>");
-            if (classSelect.SelectedIndex == 0) //All Asset Classes
+            html.Append("<h2>" + /*dt.Rows[0][1]*/cboAssetClass.SelectedValue + "</h2>");
+            html.Append("<div style='width:100%;max-height:600px;overflow:auto;'>");
+            if (cboAssetClass.SelectedIndex == 0) //All Asset Classes
             {
-                dt = this.GetTopView();
-                html.Append("<table border = '1' height='80px' width='100%' bottom='0%'>");
-
-                //Calculate 'total' value
-                var total = 0;
-                if (dt.Rows.Count > 0)
+                using (DataTable dt = this.GetTopView())
                 {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        var filt = (int)row["FilteredFunds"];
-                        total += filt;
-                    }
-                }
-                if (dt.Rows.Count > 0)
-                {
-                    //Building the Header row.
-                    html.Append("<tr>");
-                    html.Append("<th>");
-                    html.Append("Asset Class");
-                    html.Append("</th>");
-                    html.Append("<th>");
-                    html.Append("Funds");
-                    html.Append("</th>");
-                    html.Append("<th>");
-                    html.Append("%");
-                    html.Append("</th>");
-                    html.Append("</tr>");
+                    html.Append("<table border='1' height='80px' width='100%' bottom='0%'>");
 
-                    //Building the Data rows.
-                    foreach (DataRow row in dt.Rows)
+                    //Calculate 'total' value
+                    var total = 0;
+                    if (dt.Rows.Count > 0)
                     {
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            var filt = (int)row["FilteredFunds"];
+                            total += filt;
+                        }
+                        //Building the Header row.
                         html.Append("<tr>");
-                        html.Append("<td>");
-                        html.Append(row["Asset Class"]);
-                        html.Append("</td>");
-                        html.Append("<td>");
-                        html.Append(row["FilteredFunds"]);
-                        html.Append("</td>");
-                        //Get Percentage
-                        //var total = (int)row["TotalFunds"];
-                        var filt = (int)row["FilteredFunds"];
-                        decimal per = Math.Round(Decimal.Divide(filt, total) * 100, 2);
-                        html.Append("<td>");
-                        html.Append(per);
-                        html.Append("</td>");
+                        html.Append("<th>");
+                        html.Append("Asset Class");
+                        html.Append("</th>");
+                        html.Append("<th>");
+                        html.Append("Funds");
+                        html.Append("</th>");
+                        html.Append("<th>");
+                        html.Append("%");
+                        html.Append("</th>");
                         html.Append("</tr>");
-                    }
 
-                    //Table end.
-                    html.Append("</table>");
-                }
-                else
-                {
-                    html.Append("<b>No available funds for this combination of NAV Return Range, Time Period and Asset Class");
-                }
-                html.Append("</div><div class='container'>");
-            }
-            else if (dt.Rows.Count > 0)
-            {
-                html.Append("<table border = '1' height='80px' width='100%' bottom='0%'>");
-
-                //Building the Header row.
-                html.Append("<tr>");
-                var columnCount = 0;
-                foreach (DataColumn column in dt.Columns)
-                {
-                    if (columnCount <= 1 || columnCount >= 10)
-                    {
-                        columnCount++;
-                        continue;
-                    }
-                        
-                    html.Append("<th>");
-                    if (columnCount == 4)
-                    {
-                        if (timePeriodSelect.SelectedValue == "3")
-                        {
-                            html.Append("WeeklyNAVReturn");
-                        }
-                        else if (timePeriodSelect.SelectedValue == "4")
-                        {
-                            html.Append("MonthlyNAVReturn");
-                        }
-                        else
-                        {
-                            html.Append(column.ColumnName);
-                        }
-                    }
-                    else if (columnCount == 5)
-                    {
-                        if (timePeriodSelect.SelectedValue == "3")
-                        {
-                            html.Append("WeeklyMarketReturn");
-                        }
-                        else if (timePeriodSelect.SelectedValue == "4")
-                        {
-                            html.Append("MonthlyMarketReturn");
-                        }
-                        else
-                        {
-                            html.Append(column.ColumnName);
-                        }
-                    }
-                    else 
-                    {
-                        html.Append(column.ColumnName);
-                    }
-                    html.Append("</th>");
-                    columnCount++;
-                }
-                //html.Append("<th>");
-                //html.Append("NAV Return (YTD)");
-                //html.Append("</th>");
-                //html.Append("<th>");
-                //html.Append("Mkt Return (YTD)");
-                //html.Append("</th>");
-                html.Append("<th>");
-                html.Append("M/Q");
-                html.Append("</th>");
-                html.Append("<th>");
-                html.Append("ABS");
-                html.Append("</th>");
-                html.Append("</tr>");
-
-                //Building the Data rows.
-                foreach (DataRow row in dt.Rows)
-                {
-                    html.Append("<tr>");
-                    var count = 0;
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        if (count <= 1 || count >= 10)
-                        {
-                            count++;
-                            continue;
-                        }
-                        if (count == 2)
-                        {
-                            var check = getBetaCheck(beta, row[column.ColumnName].ToString());
-                            if (check > 0)
-                                html.Append("<td bgcolor='green'>");
-                            else if (check < 0)
-                                html.Append("<td bgcolor='red'>");
-                            else
-                                html.Append("<td>");
-                        }
-                        else
-                        {
-                            html.Append("<td>");
-                        }
-                        if (count == 4)
-                        {
-                            if (timePeriodSelect.SelectedValue == "3" || timePeriodSelect.SelectedValue == "4")
-                            {
-                                html.Append(((decimal)row["WeekNav"]).ToString("#.##"));
-                            }
-                            else
-                            {
-                                html.Append(row[column.ColumnName]);
-                            }
-                        }
-                        else if (count == 5)
-                        {
-                            if (timePeriodSelect.SelectedValue == "3" || timePeriodSelect.SelectedValue == "4")
-                            {
-                                html.Append(((decimal)row["WeekMak"]).ToString("#.##"));
-                            }
-                            else
-                            {
-                                html.Append(row[column.ColumnName]);
-                            }
-                        }
-                        else
-                        {
-                            html.Append(row[column.ColumnName]);
-                        }
-                        html.Append("</td>");
-                        count++;
-                    }
-                    html.Append("<td>");
-                    html.Append("");
-                    html.Append("</td>");
-                    html.Append("<td>");
-                    //Put in code for ABS here
-                    try
-                    {
-                        var yield = (decimal)row["DistributionYield"];
-                        var prem = (decimal)row[prmOpt];
-                        var abs = yield + (-1 * (prem));
-                        html.Append(abs);
-                    }
-                    catch (Exception err)
-                    {
-                        html.Append(err.Message.ToString());
-
-                    }
-                    html.Append("</td>");
-
-                    html.Append("</tr>");
-                }
-
-                //Table end.
-                html.Append("</table>");
-
-                html.Append("</div><div class='container'>");
-
-                //Top Funds Table start.
-                html.Append("<br></br>");
-                html.Append("<font size='4' color='blue'>Top Holdings for " + /*topFunds.Rows[0][topFunds.Columns[0].ColumnName]*/topFundsSelect.SelectedValue + "</font><br></br>");
-                html.Append("<table id='topHoldingsTable' border = '1' height='80px' width='100%' bottom='0%' overflow='scroll' class='tablesorter'>");
-
-                //Building the Header row.
-                html.Append("<tr>");
-                /*foreach (DataColumn column in topFunds.Columns)
-                {
-                    html.Append("<th>");
-                    html.Append(column.ColumnName);
-                    html.Append("</th>");
-                }*/
-
-                html.Append("<th onclick='sort_table(topHoldingsTable, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;'>");
-                html.Append("Name");
-                html.Append("</th>");
-                html.Append("<th onclick='sort_table(topHoldingsTable, 1, asc2); asc2 *= -1; asc1 = 1; asc3 = 1;'>");
-                html.Append("Holding");
-                html.Append("</th>");
-                html.Append("</tr>");
-
-                if (topFunds.Rows.Count > 0)
-                {
-                    var listOfTopFunds = ((string)topFunds.Rows[0]["Top Funds"]).Split('%').ToList();
-                    foreach (var fund in listOfTopFunds)
-                    {
-                        if (fund.Length > 4)
+                        //Building the Data rows.
+                        foreach (DataRow row in dt.Rows)
                         {
                             html.Append("<tr>");
                             html.Append("<td>");
-                            html.Append(fund.Substring(0, (fund.Length - 4)));
+                            html.Append(row["Asset Class"]);
                             html.Append("</td>");
                             html.Append("<td>");
-                            html.Append(fund.Substring((fund.Length - 4), 4) + "%");
+                            html.Append(row["FilteredFunds"]);
+                            html.Append("</td>");
+                            //Get Percentage
+                            //var total = (int)row["TotalFunds"];
+                            var filt = (int)row["FilteredFunds"];
+                            decimal per = Math.Round(Decimal.Divide(filt, total) * 100, 2);
+                            html.Append("<td>");
+                            html.Append(per);
                             html.Append("</td>");
                             html.Append("</tr>");
                         }
+                        //Table end.
+                        html.Append("</table>");
+
+                    }
+                    else
+                    {
+                        html.Append("<b>No available funds for this combination of NAV Return Range, Time Period and Asset Class");
                     }
                 }
-                //Building the Data rows.
-                /*foreach (DataRow row in topFunds.Rows)
-                {
-                    html.Append("<tr>");
-                    foreach (DataColumn column in topFunds.Columns)
-                    {
-                        html.Append("<td>");
-                        html.Append(row[column.ColumnName]);
-                        html.Append("</td>");
-                    }
-                }*/
-
-                //Table end.
-                html.Append("</table>");
+                html.Append("</div><div class='container'>");
             }
-            else
+            else 
             {
-                html.Append("<b>No available funds for this combination of NAV Return Range and Asset Class");
+                using (DataTable dt = this.GetData())
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        html.Append("<table border = '1' height='80px' width='100%' bottom='0%'>");
+
+                        //Building the Header row.
+                        html.Append("<tr>");
+                        var columnCount = 0;
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            if (columnCount <= 1 || columnCount >= 10)
+                            {
+                                columnCount++;
+                                continue;
+                            }
+
+                            html.Append("<th>");
+                            if (columnCount == 4)
+                            {
+                                if (cboTimePeriod.SelectedValue == "3")
+                                {
+                                    html.Append("WeeklyNAVReturn");
+                                }
+                                else if (cboTimePeriod.SelectedValue == "4")
+                                {
+                                    html.Append("MonthlyNAVReturn");
+                                }
+                                else
+                                {
+                                    html.Append(column.ColumnName);
+                                }
+                            }
+                            else if (columnCount == 5)
+                            {
+                                if (cboTimePeriod.SelectedValue == "3")
+                                {
+                                    html.Append("WeeklyMarketReturn");
+                                }
+                                else if (cboTimePeriod.SelectedValue == "4")
+                                {
+                                    html.Append("MonthlyMarketReturn");
+                                }
+                                else
+                                {
+                                    html.Append(column.ColumnName);
+                                }
+                            }
+                            else
+                            {
+                                html.Append(column.ColumnName);
+                            }
+                            html.Append("</th>");
+                            columnCount++;
+                        }
+                        //html.Append("<th>");
+                        //html.Append("NAV Return (YTD)");
+                        //html.Append("</th>");
+                        //html.Append("<th>");
+                        //html.Append("Mkt Return (YTD)");
+                        //html.Append("</th>");
+                        html.Append("<th>");
+                        html.Append("M/Q");
+                        html.Append("</th>");
+                        html.Append("<th>");
+                        html.Append("ABS");
+                        html.Append("</th>");
+                        html.Append("</tr>");
+
+                        //Building the Data rows.
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            html.Append("<tr>");
+                            var count = 0;
+                            foreach (DataColumn column in dt.Columns)
+                            {
+                                if (count <= 1 || count >= 10)
+                                {
+                                    count++;
+                                    continue;
+                                }
+                                if (count == 2)
+                                {
+                                    using (DataTable beta = this.GetBeta())
+                                    {
+                                        var check = getBetaCheck(beta, row[column.ColumnName].ToString());
+                                        if (check > 0)
+                                            html.Append("<td bgcolor='green'>");
+                                        else if (check < 0)
+                                            html.Append("<td bgcolor='red'>");
+                                        else
+                                            html.Append("<td>");
+                                    }
+                                }
+                                else
+                                {
+                                    html.Append("<td>");
+                                }
+                                if (count == 4)
+                                {
+                                    if (cboTimePeriod.SelectedValue == "3" || cboTimePeriod.SelectedValue == "4")
+                                    {
+                                        html.Append(((decimal)row["WeekNav"]).ToString("#.##"));
+                                    }
+                                    else
+                                    {
+                                        html.Append(row[column.ColumnName]);
+                                    }
+                                }
+                                else if (count == 5)
+                                {
+                                    if (cboTimePeriod.SelectedValue == "3" || cboTimePeriod.SelectedValue == "4")
+                                    {
+                                        html.Append(((decimal)row["WeekMak"]).ToString("#.##"));
+                                    }
+                                    else
+                                    {
+                                        html.Append(row[column.ColumnName]);
+                                    }
+                                }
+                                else
+                                {
+                                    html.Append(row[column.ColumnName]);
+                                }
+                                html.Append("</td>");
+                                count++;
+                            }
+                            html.Append("<td>");
+                            html.Append("");
+                            html.Append("</td>");
+                            html.Append("<td>");
+                            //Put in code for ABS here
+                            try
+                            {
+                                var yield = (decimal)row["Yield"];
+                                var prem = (decimal)row["Discount"];
+                                var abs = yield + (-1 * (prem));
+                                html.Append(abs);
+                            }
+                            catch (Exception err)
+                            {
+                                html.Append(err.Message.ToString());
+
+                            }
+                            html.Append("</td>");
+                            html.Append("</tr>");
+                        }
+                        //Table end.
+                        html.Append("</table>");
+                        html.Append("</div>");
+
+
+                        using (DataTable topFunds = this.GetTopFunds())
+                        {
+                            if (topFunds.Rows.Count > 0)
+                            {
+                                //Top Funds Table start.
+                                //html.Append("<br></br>");
+                                //html.Append("<font size='4' color='blue'>Top Holdings for " + /*topFunds.Rows[0][topFunds.Columns[0].ColumnName]topFundsSelect.SelectedValue*/ + "</font><br></br>");
+                                html.Append("<div class='container' style='margin-top:40px'>");
+                                html.Append("<table id='topHoldingsTable' border = '1' height='80px' width='100%' bottom='0%' overflow='scroll' class='tablesorter'>");
+
+                                //Building the Header row.
+                                html.Append("<tr>");
+                                /*foreach (DataColumn column in topFunds.Columns)
+                                {
+                                    html.Append("<th>");
+                                    html.Append(column.ColumnName);
+                                    html.Append("</th>");
+                                }*/
+
+                                html.Append("<th onclick='sort_table(topHoldingsTable, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;'>");
+                                html.Append("Name");
+                                html.Append("</th>");
+                                html.Append("<th onclick='sort_table(topHoldingsTable, 1, asc2); asc2 *= -1; asc1 = 1; asc3 = 1;'>");
+                                html.Append("Holding");
+                                html.Append("</th>");
+                                html.Append("</tr>");
+
+                                var listOfTopFunds = ((string)topFunds.Rows[0]["Top Funds"]).Split('%').ToList();
+                                foreach (var fund in listOfTopFunds)
+                                {
+                                    if (fund.Length > 4)
+                                    {
+                                        html.Append("<tr>");
+                                        html.Append("<td>");
+                                        html.Append(fund.Substring(0, (fund.Length - 4)));
+                                        html.Append("</td>");
+                                        html.Append("<td>");
+                                        html.Append(fund.Substring((fund.Length - 4), 4) + "%");
+                                        html.Append("</td>");
+                                        html.Append("</tr>");
+                                    }
+                                }
+                            }
+                            //Table end.
+                            html.Append("</table>");
+                        }
+                        //Building the Data rows.
+                        /*foreach (DataRow row in topFunds.Rows)
+                        {
+                            html.Append("<tr>");
+                            foreach (DataColumn column in topFunds.Columns)
+                            {
+                                html.Append("<td>");
+                                html.Append(row[column.ColumnName]);
+                                html.Append("</td>");
+                            }
+                        }*/
+                    }
+                    else
+                    {
+                        html.Append("<b>No available funds for this combination of NAV Return Range and Asset Class");
+                    }
+                }
             }
             html.Append("</div>");
 
             //Append the HTML string to Placeholder.
-            PlaceHolder1.Controls.Add(new Literal { Text = html.ToString() });
-        }
-
-        private void TopFundBtn_Click(Object sender,
-                           EventArgs e)
-        {
+            phSearchResults.Controls.Add(new Literal { Text = html.ToString() });
         }
 
         protected void classSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateClasses();
-        }
-
-        protected void topFundsSelect_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            //updateClasses();
             updateDataTable();
         }
 
         protected void navReturnPercent_TextChanged(object sender, EventArgs e)
         {
-            updateClasses();
+            //updateClasses();
+            updateDataTable();
         }
 
         protected void timePeriodSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updateClasses();
+            //updateClasses();
+            updateDataTable();
         }
 
         private void setTimePeriod()
         {
-            string timeRange = timePeriodSelect.SelectedValue;
+            string timeRange = cboTimePeriod.SelectedValue;
             switch (timeRange)
             {
                 case "0": //YTD
@@ -413,14 +411,14 @@ namespace BiggWhaleWebAppDemo
         }
         private void setNavRange()
         {
-           string navRange = navReturnPercent.Text;
-           //navReturnPercent.Text = string.Empty;
-           if (string.IsNullOrEmpty(navRange))
+            string navRange = txtNavReturnPct.Text;
+            //navReturnPercent.Text = string.Empty;
+            if (string.IsNullOrEmpty(navRange))
             {
                 bottom = -1000;
                 weekMonthBottom = -1000;
             }
-            else if (timePeriodSelect.SelectedIndex == 1 || timePeriodSelect.SelectedIndex == 2)
+            else if (cboTimePeriod.SelectedIndex == 1 || cboTimePeriod.SelectedIndex == 2)
             {
                 bottom = -1000;
                 weekMonthBottom = Int32.Parse(navRange);
@@ -480,7 +478,7 @@ namespace BiggWhaleWebAppDemo
 
             CalcStat = GetDataSet(ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString, cmd2);
 
-            string select = classSelect.SelectedValue;
+            string select = cboAssetClass.SelectedValue;
             setNavRange();
             setTimePeriod();
             string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
@@ -506,7 +504,7 @@ namespace BiggWhaleWebAppDemo
 
         private DataTable GetTopView()
         {
-            string select = classSelect.SelectedValue;
+            string select = cboAssetClass.SelectedValue;
             setNavRange();
             setTimePeriod();
             string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
@@ -528,7 +526,7 @@ namespace BiggWhaleWebAppDemo
                                                        " and fd.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = f.id) " +
                                                        " and fd." + navOpt /*YTDNAVReturn*/ + " >= " + bottom + ") a " +
                                                        //Option if Weekly/Monthly
-                                                       ( (timePeriodSelect.SelectedValue == "3" || timePeriodSelect.SelectedValue == "4") ?
+                                                       ((cboTimePeriod.SelectedValue == "3" || cboTimePeriod.SelectedValue == "4") ?
                                                        " inner join (select distinct a.Name as WeeklyName, ((a.NAV - b.NAV) / b.NAV * 100) as WeekNav, ((a.MarketPrice - b.MarketPrice) / b.MarketPrice * 100) as WeekMak " +
                                                        " from " +
                                                        " (select fd.NAV, fd.MarketPrice, f.id, f.Name from Funds f, FundDetails fd where f.id = fd.fund_id  " +
@@ -563,7 +561,7 @@ namespace BiggWhaleWebAppDemo
 
         private DataTable GetData()
         {
-            string select = classSelect.SelectedValue;
+            string select = cboAssetClass.SelectedValue;
             setNavRange();
             setTimePeriod();
             string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
@@ -577,15 +575,15 @@ namespace BiggWhaleWebAppDemo
                 //                                       "and fd.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = f.id) " +
                 //                                       "and f.[Asset Class] like '%" + select + "%' " +
                 //                                       "and fd." + navOpt /*YTDNAVReturn*/ + " >= " + bottom + " and fd." + navOpt /*YTDNAVReturn*/ + " <= " + top + " " +
-                //                                       "order by f.Name asc, f.[Total Net Assets] desc"))
+                //                                       "order by f.Name asc, f.[Total Net Assets] desc"))YTDPremiumDiscountAvg
                 using (SqlCommand cmd = new SqlCommand("select * from (select distinct f.id, f.[Asset Class], f.Name, f.[Ticker Symbol], fd." + navOpt /*YTDNAVReturn*/ + " as 'NAV', fd." + makOpt /*YTDMarketReturn*/ + " as 'Market Return', f.[Percent Leveraged Assets], fd.DistributionYield as 'Yield', f.[Total Net Assets], fd." + prmOpt /*YTDPremiumDiscountAvg*/ + " as 'Discount', fd.[Crawl Date]  " +
                                                        "from Funds f, FundDetails fd  " +
                                                        "where f.id = fd.fund_id  " +
                                                        "and fd.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = f.id) " +
                                                        "and f.[Asset Class] like '%" + select + "%' " +
                                                        "and fd." + navOpt /*YTDNAVReturn*/ + " >= " + bottom + " ) a " +
-                                                        //Option if Weekly/Monthly
-                                                       ((timePeriodSelect.SelectedValue == "3" || timePeriodSelect.SelectedValue == "4") ?
+                                                       //Option if Weekly/Monthly
+                                                       ((cboTimePeriod.SelectedValue == "3" || cboTimePeriod.SelectedValue == "4") ?
                                                        " inner join (select distinct a.Name as WeeklyName, ((a.NAV - b.NAV) / b.NAV * 100) as WeekNav, ((a.MarketPrice - b.MarketPrice) / b.MarketPrice * 100) as WeekMak " +
                                                        " from " +
                                                        " (select fd.NAV, fd.MarketPrice, f.id, f.Name from Funds f, FundDetails fd where f.id = fd.fund_id  " +
@@ -597,7 +595,7 @@ namespace BiggWhaleWebAppDemo
                                                        " where a.id = b.id) WeeklyNavs " +
                                                        " On a.Name = WeeklyNavs.WeeklyName " +
                                                        " where WeeklyNavs.WeekNav >= " + weekMonthBottom + " " : "") +
-                                                        //End Optional
+                                                       //End Optional
                                                        " order by a.Name asc"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -616,8 +614,8 @@ namespace BiggWhaleWebAppDemo
 
         private DataTable GetTopFunds()
         {
-            string value1 = classSelect.SelectedValue;
-            string value2 = topFundsSelect.SelectedValue;
+            string value1 = cboAssetClass.SelectedValue;
+            //string value2 = topFundsSelect.SelectedValue;
             setNavRange();
             setTimePeriod();
             string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
@@ -629,11 +627,11 @@ namespace BiggWhaleWebAppDemo
                                                        "and f.id = fd.fund_id  " +
                                                        "and fa.fund_id = fd.fund_id  " +
                                                        "and f.[Asset Class] like '%" + value1 + "%' " +
-                                                       "and f.[Ticker Symbol] like '%" + value2 + "%' " +
+                                                       //"and f.[Ticker Symbol] like '%" + value2 + "%' " +
                                                        "and fd.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = f.id) " +
                                                        "and fd." + navOpt /*YTDNAVReturn*/ + " >= " + bottom + " ) a " +
                                                        //Option if Weekly/Monthly
-                                                       ((timePeriodSelect.SelectedValue == "3" || timePeriodSelect.SelectedValue == "4") ?
+                                                       ((cboTimePeriod.SelectedValue == "3" || cboTimePeriod.SelectedValue == "4") ?
                                                        " inner join (select distinct a.Name as WeeklyName, ((a.NAV - b.NAV) / b.NAV * 100) as WeekNav, ((a.MarketPrice - b.MarketPrice) / b.MarketPrice * 100) as WeekMak " +
                                                        " from " +
                                                        " (select fd.NAV, fd.MarketPrice, f.id, f.Name from Funds f, FundDetails fd where f.id = fd.fund_id  " +
@@ -676,40 +674,40 @@ namespace BiggWhaleWebAppDemo
                         using (DataTable dt = new DataTable())
                         {
                             sda.Fill(dt);
-                            classSelect.Items.Clear();
+                            cboAssetClass.Items.Clear();
                             //Add intial option
                             ListItem start = new ListItem();
                             start.Value = "All Asset Classes";
                             start.Text = "All Asset Classes";
-                            classSelect.Items.Add(start);
+                            cboAssetClass.Items.Add(start);
                             foreach (DataRow row in dt.Rows)
                             {
                                 String value = (string)row[0];
                                 ListItem item = new ListItem();
                                 item.Value = value;
                                 item.Text = value;
-                                classSelect.Items.Add(item);
+                                cboAssetClass.Items.Add(item);
                             }
-                            classSelect.SelectedIndex = 0;
+                            cboAssetClass.SelectedIndex = 0;
                         }
                     }
                 }
             }
-            classSelect.SelectedIndex = 0;
+            cboAssetClass.SelectedIndex = 0;
 
-            classSelect.AutoPostBack = true;
-            classSelect.Attributes["OnSelectedIndexChanged"] = "classSelect_SelectedIndexChanged";
-            topFundsSelect.AutoPostBack = true;
-            topFundsSelect.Attributes["OnSelectedIndexChanged"] = "topFundsSelect_SelectedIndexChanged";
-            navReturnPercent.AutoPostBack = true;
-            navReturnPercent.Attributes["OnTextChanged"] = "navReturnPercent_TextChanged";
-            timePeriodSelect.AutoPostBack = true;
-            timePeriodSelect.Attributes["OnSelectedIndexChanged"] = "timePeriodSelect_SelectedIndexChanged";
+            cboAssetClass.AutoPostBack = true;
+            cboAssetClass.Attributes["OnSelectedIndexChanged"] = "classSelect_SelectedIndexChanged";
+            //topFundsSelect.AutoPostBack = true;
+            //topFundsSelect.Attributes["OnSelectedIndexChanged"] = "topFundsSelect_SelectedIndexChanged";
+            txtNavReturnPct.AutoPostBack = true;
+            txtNavReturnPct.Attributes["OnTextChanged"] = "navReturnPercent_TextChanged";
+            cboTimePeriod.AutoPostBack = true;
+            cboTimePeriod.Attributes["OnSelectedIndexChanged"] = "timePeriodSelect_SelectedIndexChanged";
         }
 
         private void updateClasses()
         {
-            String select = classSelect.SelectedValue;
+            String select = cboAssetClass.SelectedValue;
             setNavRange();
             setTimePeriod();
             string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
@@ -743,14 +741,14 @@ namespace BiggWhaleWebAppDemo
                         using (dt)
                         {
                             sda.Fill(dt);
-                            topFundsSelect.Items.Clear();
+                            //topFundsSelect.Items.Clear();
                             foreach (DataRow row in dt.Rows)
                             {
                                 String value = (string)row[0];
                                 ListItem item = new ListItem();
                                 item.Value = value;
                                 item.Text = value;
-                                topFundsSelect.Items.Add(item);
+                                //topFundsSelect.Items.Add(item);
                             }
                             //topFundsSelect.SelectedIndex = 0;
                         }

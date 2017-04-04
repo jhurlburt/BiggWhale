@@ -1,8 +1,9 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="BiggWhaleWebAppDemo.Contact" %>
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="BiggWhaleWebAppDemo.Contact" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
-        <h1><%: Title %>.</h1>
+        <h1><%: Title %></h1>
+        <br />
         <h2>Bigg Whale, LLC</h2>
     </hgroup>
 

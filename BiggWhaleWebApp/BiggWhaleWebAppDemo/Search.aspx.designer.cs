@@ -22,76 +22,58 @@ namespace BiggWhaleWebAppDemo {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// navReturnPercent control.
+        /// txtNavReturnPct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox navReturnPercent;
+        protected global::System.Web.UI.WebControls.TextBox txtNavReturnPct;
         
         /// <summary>
-        /// Label4 control.
+        /// lblTimePeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblTimePeriod;
         
         /// <summary>
-        /// timePeriodSelect control.
+        /// cboTimePeriod control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList timePeriodSelect;
+        protected global::System.Web.UI.WebControls.DropDownList cboTimePeriod;
         
         /// <summary>
-        /// Label1 control.
+        /// lblAssetClass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblAssetClass;
         
         /// <summary>
-        /// classSelect control.
+        /// cboAssetClass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList classSelect;
+        protected global::System.Web.UI.WebControls.DropDownList cboAssetClass;
         
         /// <summary>
-        /// Label2 control.
+        /// phSearchResults control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// topFundsSelect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList topFundsSelect;
-        
-        /// <summary>
-        /// PlaceHolder1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
+        protected global::System.Web.UI.WebControls.PlaceHolder phSearchResults;
         
         /// <summary>
         /// RegularExpressionValidator1 control.
@@ -101,14 +83,5 @@ namespace BiggWhaleWebAppDemo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-        
-        /// <summary>
-        /// PlaceHolder2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder2;
     }
 }

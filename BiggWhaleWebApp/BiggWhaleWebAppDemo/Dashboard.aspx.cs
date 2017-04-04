@@ -17,15 +17,15 @@ namespace BiggWhaleWebAppDemo
         protected void Page_Load(object sender, EventArgs e)
         {
             Session.Add("CurrentDate", DateTime.Now.ToString("MM-dd-yyyy"));
-            //navReturnPercentFilter2.Text = "0";
-            Session.Add("ReturnPercent", navReturnPercentFilter2.Text);
+            //txtNavRetPctFilter.Text = "0";
+            Session.Add("ReturnPercent", txtNavReturnPct.Text);
             Session.Add("NAVReturnType", "YTDNAVReturn");
-            Session.Add("MarketReturnType","YTDMarketReturn");
-            Session.Add("PremiumReturnType","YTDPremiumDiscountAvg");
+            Session.Add("MarketReturnType", "YTDMarketReturn");
+            Session.Add("PremiumReturnType", "YTDPremiumDiscountAvg");
             Session.Add("PeriodStartDate", DateTime.Now.AddDays(-7).ToShortDateString());
             Session.Add("MinAssetCount", 1);
 
-            Label7.Text = "Asset Class Counts";
+            lblAssetKey.Text = "Asset Class Counts";
             if (!IsPostBack)
             {
                 updateClassList();
@@ -34,7 +34,7 @@ namespace BiggWhaleWebAppDemo
                 //ListView3.DataBind();
 
             }
-            Chart1.Series[0]["PieLabelStyle"] = "Disabled";
+            chrAssetClass.Series[0]["PieLabelStyle"] = "Disabled";
             refreshChart();
             //REngine.SetEnvironmentVariables();
             //REngine engine = REngine.GetInstance();
@@ -45,11 +45,6 @@ namespace BiggWhaleWebAppDemo
             //var s = engine.GetSymbol("s").AsCharacter().First();
             //Console.WriteLine(x);
             //Console.WriteLine(s);
-        }
-
-        protected void Chart1_Load(object sender, EventArgs e)
-        {
-            //RefreshChart();
         }
 
         private void refreshChart()
@@ -68,6 +63,8 @@ namespace BiggWhaleWebAppDemo
                 int assetCount = getAssetCount();
                 if (assetCount > 1)
                 {
+                    pnlChart.Visible = true;
+                    lblError.Visible = false;
                     Session["MinAssetCount"] = 1;
                     if (assetCount >= 20)
                     {
@@ -81,9 +78,14 @@ namespace BiggWhaleWebAppDemo
                         src.SelectParameters.Add("MinAssetCount", Session["MinAssetCount"].ToString());
                         src.SelectCommandType = SqlDataSourceCommandType.Text;
 
-                        Chart1.DataSource = src;
-                        Chart1.DataBind();
+                        chrAssetClass.DataSource = src;
+                        chrAssetClass.DataBind();
                     }
+                }
+                else
+                {
+                    pnlChart.Visible = false;
+                    lblError.Visible = true;
                 }
             }
             catch (Exception)
@@ -94,21 +96,6 @@ namespace BiggWhaleWebAppDemo
 
         protected void Chart1_Click(object sender, ImageMapEventArgs e)
         {
-            string assetClass = e.PostBackValue;
-            selectedAssetClass = assetClass;
-            Session["Chart1AssetClass"] = assetClass;
-            Label9.Text = "Asset Class Fund Returns for " + assetClass;
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-        
-        protected void navReturnPercentFilter2_TextChanged(object sender, EventArgs e)
-        {
-            Session["ReturnPercent"] = navReturnPercentFilter2.Text;
-            refreshChart();
         }
 
         private int getAssetCount()
@@ -134,7 +121,7 @@ namespace BiggWhaleWebAppDemo
                 DataView dv = (DataView)src.Select(DataSourceSelectArguments.Empty);
                 if (dv != null)
                 {
-                    return (int)dv.Table.Rows[0][0];                    
+                    return (int)dv.Table.Rows[0][0];
                 }
             }
             catch (Exception)
@@ -144,9 +131,50 @@ namespace BiggWhaleWebAppDemo
             return 0;
         }
 
-        protected void timePeriodSelect_SelectedIndexChanged(object sender, EventArgs e)
+        private void updateClassList()
         {
-            string timeRange = timePeriodSelect.SelectedValue;
+            string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("select distinct f.[Asset Class] from Funds f where f.[Asset Class] not like '%Muni%'"))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            cboClassSelect.Items.Clear();
+                            //Add intial option
+                            ListItem start = new ListItem();
+                            start.Value = "All Asset Classes";
+                            start.Text = "All Asset Classes";
+                            cboClassSelect.Items.Add(start);
+                            foreach (DataRow row in dt.Rows)
+                            {
+                                String value = (string)row[0];
+                                ListItem item = new ListItem();
+                                item.Value = value;
+                                item.Text = value;
+                                cboClassSelect.Items.Add(item);
+                            }
+                            cboClassSelect.SelectedIndex = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        protected void txtNavReturnPct_TextChanged(object sender, EventArgs e)
+        {
+            Session["ReturnPercent"] = txtNavReturnPct.Text;
+            refreshChart();
+        }
+
+        protected void cboTimePeriod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string timeRange = cboTimePeriod.SelectedValue;
             switch (timeRange)
             {
                 case "0": //YTD
@@ -187,15 +215,11 @@ namespace BiggWhaleWebAppDemo
                     Session["PeriodStartDate"] = DateTime.Now.AddDays(-7).ToShortDateString();
                     break;
             }
-
-            // Refresh the displayed objects
-            //ListView1.DataBind();
-            //ListView3.DataBind();
         }
 
-        protected void classSelect_SelectedIndexChanged(object sender, EventArgs e)
+        protected void cboClassSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedAssetClass = classSelect.Items[classSelect.SelectedIndex].Text;
+            string selectedAssetClass = cboClassSelect.Items[cboClassSelect.SelectedIndex].Text;
             if (!string.IsNullOrEmpty(selectedAssetClass))
             {
                 if (selectedAssetClass == "All Asset Classes")
@@ -208,58 +232,32 @@ namespace BiggWhaleWebAppDemo
                 }
             }
             refreshChart();
+
         }
 
-
-        private void updateClassList()
-        {
-            string constr = ConfigurationManager.ConnectionStrings["CEF_dbConnectionString"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = new SqlCommand("select distinct f.[Asset Class] from Funds f where f.[Asset Class] not like '%Muni%'"))
-                {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        using (DataTable dt = new DataTable())
-                        {
-                            sda.Fill(dt);
-                            classSelect.Items.Clear();
-                            //Add intial option
-                            ListItem start = new ListItem();
-                            start.Value = "All Asset Classes";
-                            start.Text = "All Asset Classes";
-                            classSelect.Items.Add(start);
-                            foreach (DataRow row in dt.Rows)
-                            {
-                                String value = (string)row[0];
-                                ListItem item = new ListItem();
-                                item.Value = value;
-                                item.Text = value;
-                                classSelect.Items.Add(item);
-                            }
-                            classSelect.SelectedIndex = 0;
-                        }
-                    }
-                }
-            }
-        }
-
-        protected void classSelect_Load(object sender, EventArgs e)
-        {
-            
-        }
-        
-        protected void Button1_Click1(object sender, EventArgs e)
+        protected void btnAllClasses_Click(object sender, EventArgs e)
         {
             Session["Chart1AssetClass"] = "%";
-            Label9.Text = "Asset Class Fund Returns for All Classes";
+            lblAssetClassFundReturns.Text = "Asset Class Fund Returns for All Classes";
         }
 
-        protected void GridView2_DataBound(object sender, EventArgs e)
+        protected void chrAssetClass_Click(object sender, ImageMapEventArgs e)
         {
-            foreach (GridViewRow row in GridView2.Rows)
+            string assetClass = e.PostBackValue;
+            selectedAssetClass = assetClass;
+            Session["Chart1AssetClass"] = assetClass;
+            lblAssetClassFundReturns.Text = "Asset Class Fund Returns for " + assetClass;
+
+        }
+
+        protected void chrAssetClass_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void grdFundSummaryDetail_DataBound(object sender, EventArgs e)
+        {
+            foreach (GridViewRow row in grdFundSummaryDetail.Rows)
             {
                 if (row.Cells[9].Text == "Rising")
                 {

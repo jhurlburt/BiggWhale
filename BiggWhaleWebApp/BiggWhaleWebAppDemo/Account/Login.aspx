@@ -1,19 +1,18 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="BiggWhaleWebAppDemo.Account.Login" %>
-<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="~/Account/Login.aspx.cs" Inherits="BiggWhaleWebAppDemo.Account.Login" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
-        <h1><%: Title %>.</h1>
+        <h1><%: Title %></h1><br />
+        <h2>Login with your user name and password</h2>
     </hgroup>
     <section id="loginForm">
-        <h2>Use a local account to log in.</h2>
         <asp:Login runat="server" ViewStateMode="Disabled" RenderOuterTable="false">
             <LayoutTemplate>
                 <p class="validation-summary-errors">
                     <asp:Literal runat="server" ID="FailureText" />
                 </p>
                 <fieldset>
-                    <legend>Log in Form</legend>
+                    <legend>Login Form</legend>
                     <ol>
                         <li>
                             <asp:Label runat="server" AssociatedControlID="UserName">User name</asp:Label>
