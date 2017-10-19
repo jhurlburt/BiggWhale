@@ -37,7 +37,7 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a href="~/Default.aspx">
+                    <a href="/Default.aspx">
                         <img src="../Images/logo_jonas_128_notext.png" />
                     </a>
                 </p>

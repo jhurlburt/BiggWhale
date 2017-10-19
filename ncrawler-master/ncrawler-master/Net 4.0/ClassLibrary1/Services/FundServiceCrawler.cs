@@ -27,6 +27,6 @@ namespace NCrawler.FundServices
                 return false;
 
             return base.IsAllowedUrl(uri, referrer);
-        }
+        }        
     }
 }

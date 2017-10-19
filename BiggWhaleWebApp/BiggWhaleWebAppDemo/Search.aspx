@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="Advanced Search" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="BiggWhaleWebAppDemo.Search"%>
-
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <hgroup class="title">
         <h1><%: Title %></h1>
@@ -12,7 +11,7 @@
         <table class="table-responsive" style="table-layout: auto; empty-cells: show; width: 500px;">
             <tr>
                 <td class="col-md-1">
-                    <asp:Label ID="Label3" runat="server">Minimum Nav Return %</asp:Label>
+                    <asp:Label ID="Label3" runat="server" CssClass="noWrap">Minimum Nav Return %</asp:Label>
                     <br />
                     <asp:TextBox runat="server" ID="txtNavReturnPct" OnTextChanged="navReturnPercent_TextChanged" TextMode="Number" />
                 </td>

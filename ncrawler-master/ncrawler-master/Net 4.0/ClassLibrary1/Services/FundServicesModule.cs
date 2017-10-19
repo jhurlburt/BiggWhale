@@ -32,7 +32,5 @@ namespace NCrawler.FundServices
         {
             Setup(new FundServicesModule(resume));
         }
-
-
     }
 }

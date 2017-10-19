@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" Title="Dashboard" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="BiggWhaleWebAppDemo.Dashboard" %>
-
+﻿<%@ Page Language="C#" Title="Dashboard" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="BiggWhaleWebAppDemo.Dashboard" EnableEventValidation="false" %>
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -49,9 +48,9 @@
         </table>
         <asp:Panel ID="pnlChart" runat="server" Visible="true">
             <div id="asset-class-chart" style="float: left;">
-                <asp:Chart ID="chrAssetClass" runat="server" DataMember="DefaultView" Height="431px" Palette="Bright" Width="600px" OnClick="chrAssetClass_Click" OnLoad="chrAssetClass_Load">
+                <asp:Chart ID="chrAssetClass" runat="server" DataMember="DefaultView" Height="431px" Palette="Bright" Width="600px" OnClick="chrAssetClass_Click">
                     <Series>
-                        <asp:Series ChartType="Pie" Legend="Legend1" Name="Series1" XValueMember="Asset_Class" YValueMembers="Count" PostBackValue="#VALX" ToolTip="#AXISLABEL : #PERCENT">
+                        <asp:Series ChartType="Pie" Legend="Legend1" Name="Series1" XValueMember="Asset_Class" YValueMembers="Count" PostBackValue="#VALX" ToolTip="#AXISLABEL : #PERCENT" CustomProperties="PieLabelStyle=Disabled">
                         </asp:Series>
                     </Series>
                     <ChartAreas>
@@ -70,7 +69,7 @@
             </div>
             <div id="asset-class-key" style="float: left; margin-left: 50px;">
                 <asp:Label ID="lblAssetKey" runat="server" Text="Count of funds" CssClass="grid-title"></asp:Label>
-                <asp:GridView ID="grdAssetKey" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="dsAssetClasses" GridLines="Vertical">
+                <asp:GridView ID="grdAssetKey" runat="server" AllowSorting="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:BoundField DataField="Asset_Class" HeaderText="Asset Class" SortExpression="Asset_Class" />
@@ -92,16 +91,16 @@
                 FROM [Funds] a, [FundDetails] b 
                 WHERE a.Id = b.Fund_Id 
                 AND b.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = a.id)
-                AND b.YTDNAVReturn &gt;= @Chart1ReturnPercent 
+                AND b.YTDNAVReturn &gt;= @ReturnPercent 
                 GROUP BY [Asset Class] 
                 ORDER BY Count">
                 <SelectParameters>
-                    <asp:SessionParameter Name="Chart1ReturnPercent" SessionField="ReturnPercent" />
+                    <asp:SessionParameter Name="ReturnPercent" SessionField="ReturnPercent" />
                 </SelectParameters>
             </asp:SqlDataSource>
             <div id="fund-returns" style="float:left;">
                 <asp:Label ID="lblAssetClassFundReturns" runat="server" Text="Asset Class Fund Returns for All Classes"></asp:Label>
-                <asp:GridView ID="grdFundSummaryDetail" runat="server" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataSourceID="dsFundSummaryDetail" GridLines="Vertical" OnDataBound="grdFundSummaryDetail_DataBound">
+                <asp:GridView ID="grdFundSummaryDetail" runat="server" AllowSorting="False" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnDataBound="grdFundSummaryDetail_DataBound">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
@@ -131,13 +130,13 @@
                     SelectCommand="select distinct f.Name, f.[Asset Class], f.[Ticker Symbol], YTDNAVReturn as 'YTD NAV Return', OneYearNAVReturnAct  as 'One Year NAV',YTDMarketReturn as 'YTD Market Return', OneYearMarketReturn as 'One Year Market Return', PremiumDiscount as 'Discount',YTDPremiumDiscountAvg as 'One Year Discount', case WHEN YTDNAVReturn-OneYearNAVReturnAct &gt; 0 THEN 'Rising' WHEN YTDNAVReturn-OneYearNAVReturnAct = 0 THEN 'Steady' ELSE 'Falling' END as 'NAV Trend',case WHEN YTDMarketReturn-OneYearMarketReturn &gt; 0 THEN 'Rising' WHEN YTDMarketReturn-OneYearMarketReturn = 0 THEN 'Steady' ELSE 'Falling' END as 'Market Trend', case WHEN PremiumDiscount-YTDPremiumDiscountAvg &gt; 0 THEN 'Rising' WHEN PremiumDiscount-YTDPremiumDiscountAvg = 0 THEN 'Steady' ELSE 'Falling' END as 'Discount Trend'
                         from Funds f, FundDetails fd  
                          where f.id = fd.fund_id  
-                         and f.[Asset Class] like @SessionChart1AssetClass 
+                         and f.[Asset Class] like @AssetClass 
                         and fd.[Crawl Date] = (select Max([Crawl Date]) from FundDetails where fund_id = f.id) 
-                         and fd.YTDNAVReturn  &gt;= @Chart1ReturnPercent
+                         and fd.YTDNAVReturn  &gt;= @ReturnPercent
                         order by  f.[Asset Class]">
                     <SelectParameters>
-                        <asp:SessionParameter Name="SessionChart1AssetClass" SessionField="Chart1AssetClass" DbType="String" />
-                        <asp:SessionParameter Name="Chart1ReturnPercent" SessionField="ReturnPercent" />
+                        <asp:SessionParameter Name="AssetClass" SessionField="AssetClass" DbType="String" />
+                        <asp:SessionParameter Name="ReturnPercent" SessionField="ReturnPercent" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </div>
